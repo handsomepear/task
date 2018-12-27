@@ -1,0 +1,98 @@
+
+#index {
+  background-color: #F9FAFC;
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 178px;
+    padding: 0 30px;
+    .entry {
+      width: 330px;
+      height: 110px;
+      line-height: 110px;
+      color: #fff;
+      font-size: 36px;
+      box-shadow: 0 1px 1px rgba(0,0,0,.12);
+      border-radius: 110px;
+    }
+    .mine {
+      background-color: @btnShallow;
+    }
+    .wallet {
+      background-color: #F5A623;
+    }
+  }
+  .title {
+    display: flex;
+    align-items: center;
+    height: 78px;
+    font-size: 28px;
+    &:before {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 36px;
+      background: url("../../assets/imgs/sign.png") no-repeat center;
+      -webkit-background-size: contain;
+      background-size: contain;
+      margin-right: 12px;
+    }
+  }
+  .sign-task, .hot-task {
+    padding: 0 30px;
+    background-color: #fff;
+  }
+  .icon {
+    margin-right: 20px;
+  }
+  .hot-task {
+    margin-top: 22px;
+    .title:before {
+      background-image: url("../../assets/imgs/hot.png");
+    }
+  }
+  .sign-list {
+    display: flex;
+    flex-wrap: wrap;
+    .sign-item {
+      width: 335px;
+      display: flex;
+      align-items: center;
+      height: 136px;
+      box-sizing: border-box;
+      &:nth-child(2n) {
+        padding-left: 20px;
+      }
+    }
+
+    .desc {
+      font-size: 30px;
+      line-height: 42px;
+    }
+    .money {
+      font-size: 28px;
+      color: #F85151;
+      line-height: 40px;
+    }
+  }
+  .hot-item {
+    height: 138px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .desc {
+      display: flex;
+      align-items: center;
+    }
+    .btn {
+      padding: 0 30px;
+      height: 64px;
+      line-height: 64px;
+      border: 2px solid @moneyColor;
+      color: @moneyColor;
+      border-radius: 64px;
+      font-size: 30px;
+    }
+  }
+}

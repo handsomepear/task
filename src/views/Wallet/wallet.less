@@ -1,0 +1,103 @@
+
+#wallet {
+  background-color: #F9FAFC;
+}
+
+.user {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 486px;
+  background: linear-gradient(180deg, #FFB510, #F4960B);
+  .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: purple;
+    margin-top: 30px;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .nickname {
+    font-size: 30px;
+    color: #fff;
+    margin-top: 15px;
+  }
+  .balance {
+    font-size: 30px;
+    color: #F9FF0F;
+    margin-top: 30px;
+    span {
+      font-size: 48px;
+    }
+  }
+  .withdraw-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    height: 88px;
+    color: #fff;
+    border-radius: 88px;
+    background-color: @btnDeep;
+    margin-top: 30px;
+  }
+  .total {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -50px;
+    padding: 0 30px;
+    box-sizing: border-box;
+    .con {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100px;
+      padding: 0 28px;
+      background-color: #fff;
+      color: #666;
+      box-shadow: 0 2px 5px rgba(0,0,0,.1);
+      border-radius: 4px;
+      box-sizing: border-box;
+      span {
+        color: @moneyColor;
+        font-size: @moneyfontSize;
+      }
+    }
+  }
+
+}
+.detail {
+  margin-top: 100px;
+  background-color: #fff;
+  .head {
+    display: flex;
+    height: 78px;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+  }
+  .detail-list {
+    padding: 0 30px;
+  }
+  .detail-item {
+    display: flex;
+    height: 137px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .time {
+    font-size: 24px;
+    color: #999;
+    margin-top: 15px;
+  }
+  .money {
+    font-size: @moneyfontSize;
+    color: @moneyColor;
+  }
+}

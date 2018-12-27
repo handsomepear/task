@@ -1,0 +1,72 @@
+.task-printscreen {
+  padding: 0 30px;
+  .content {
+    padding: 28px 0;
+    border-top: 1px solid #d6d6d6;
+  }
+  .head {
+    font-size: 30px;
+    line-height: 64px;
+    margin-bottom: 20px;
+  }
+
+  .printscreen-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .item {
+    margin-right: 15px;
+    &:last-child, &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+
+  .img {
+    width: 218px;
+    height: 218px;
+    background-color: pink;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .example {
+    text-align: center;
+    color: #f85151;
+    font-size: 28px;
+    line-height: 64px;
+  }
+
+  .add-btn {
+    .img {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #eee;
+      border: 2px solid #a0a0a0;
+      border-radius: 6px;
+      font-size: 24px;
+      color: #4a4a4a;
+    }
+
+    span {
+      margin-top: 10px;
+    }
+
+  }
+}
+.submit-btn {
+  position: fixed;
+  bottom: 40px;
+  left: 30px;
+  right: 30px;
+  height: 96px;
+  line-height: 96px;
+  border-radius: 96px;
+  color: #fff;
+  text-align: center;
+  background-color: @btnShallow;
+
+}
