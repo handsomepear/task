@@ -18,5 +18,19 @@ service.interceptors.request.use(
   }
 )
 
+service.interceptors.response.use(
+  response => {
+    if (response.status === 200) {
+      if (response.data.bizStatus === 0) {
+        return Promise.resolve(response)
+      }
+      return Promise.reject(response)
+    }
+  },
+  err => {
+    return Promise.reject(err)
+  }
+)
+
 
 export default service
