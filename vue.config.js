@@ -1,8 +1,12 @@
 const path = require('path')
 
 module.exports = {
-  baseUrl: process.env.NODE_ENV === 'production' ? '/pages/dressmall/' : '/', // 生产环境打包
-  // baseUrl: process.env.NODE_ENV === 'production' ? '/pages/dresstest/' : '/', // 测试环境打包
+  devServer: {
+    port: 80,
+    disableHostCheck: true
+  },
+  baseUrl: process.env.NODE_ENV === 'production' ? '/pages/task/' : '/', // 生产环境打包
+  // baseUrl: process.env.NODE_ENV === 'production' ? '/pages/tasktest/' : '/', // 测试环境打包
   assetsDir: 'assets',
   pluginOptions: {
     'style-resources-loader': {

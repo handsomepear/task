@@ -8,10 +8,11 @@ const service = axios.create({
 // 请求配置
 service.interceptors.request.use(
   config => {
+    const openId = sessionStorage.getItem('openId')
     config.method = 'POST'
     config.headers = { 'content-type': 'application/json' }
     config.data = {
-      openId: 'zps',
+      openId: openId || '',
       ...config.data
     }
     return config

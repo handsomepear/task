@@ -4,7 +4,7 @@ export default function fileUpload(vm,file, cb) {
   vm.$loading.show()
   axios({
     method: 'post',
-    url: 'https://krypton.j.cn/api/common/getUploadInfo',
+    url: 'https://kryptontest.j.cn/api/common/getUploadInfo',
     data: {
       keys: '',
       mimeType: 'image',
@@ -23,9 +23,9 @@ export default function fileUpload(vm,file, cb) {
       mimeType: null
     }
     let observer = {
-      next(res) {
+      next() {
       },
-      error(err) {
+      error() {
         vm.$toast('上传失败请重试')
       },
       complete() {

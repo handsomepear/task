@@ -3,7 +3,7 @@
 
 <template>
   <div id="submit">
-    <TaskInfo />
+    <TaskInfo :task-detail="taskDetail"/>
     <!-- 上传截图 -->
     <div class="task-printscreen">
       <div class="content">
@@ -15,14 +15,17 @@
             </div>
             <p>点击查看示例</p>
           </div>
-          <li class="item">
-            <div class="img"></div>
+          <li class="item" v-for="(proofItem, proofIndex) in  proofImgList" :key="proofIndex">
+            <div class="img">
+              <img :src="proofItem.url" />
+            </div>
           </li>
           <div class="item add-btn">
-            <div class="img">
+            <div class="img" @click="uploadImg">
               <img src="@/assets/imgs/add.png" />
               <span>添加照片</span>
             </div>
+            <input type="file" id="upload-btn" @change="uploadTaskPrintscreen" accept="image/png,image/jpg" style="display: none">
           </div>
         </ul>
       </div>
@@ -36,8 +39,8 @@
 <script>
 
   import TaskInfo from '../../components/TaskInfo/TaskInfo'
-  import { commitTask } from '../../api/api'
-  import wx from '../../util/wxToolkit'
+  import { commitTask, makeMoneyTaskDetail } from '@/api/api'
+  import fileUpload from '@/util/_qiniu'
 
   export default {
     components: { TaskInfo },
@@ -45,34 +48,47 @@
       return {
         name: 'submit',
         taskId: 0,
-        taskPrintscreen: null
+        taskDetail: {},
+        taskPrintscreen: null,
+        proofImgList: []
       }
     },
     mounted() {
-      console.log(wx)
+      const that = this
       this.taskId = this.$route.query.taskId
+      // 获取详情信息
+      makeMoneyTaskDetail(this.taskId).then(({ data }) => {
+        that.taskDetail = data.task
+      })
     },
     methods: {
       // 提交任务
       commitTask() {
+        const that = this
         if (!this.taskPrintscreen) {
           // 去上传图片
         }
-        commitTask(this.taskId).then(({ data }) => {
+        commitTask({
+          images: that.proofImgList,
+          taskId: that.taskId
+        }).then(({ data }) => {
           console.log(data)
         })
       },
+      uploadImg() {
+        document.getElementById('upload-btn').click()
+      },
       // 上传图片
-      uploadTaskPrintscreen() {
-        wx.chooseImage({
-          count: 1, // 默认9,
-          sizeType: ['original', 'compressed'],
-          sourceType: ['album', 'camera'],
-          success: res => {
-            let localIds = res.localIds
-            console.log(localIds)
-          }
-        });
+      uploadTaskPrintscreen(e) {
+        let that = this
+        let file = e.target.files[0]
+        fileUpload(this, file, function (res) {
+          that.proofImgList.push({
+            width: 0,
+            height: 0,
+            url: res
+          })
+        })
       }
     }
   }

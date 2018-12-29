@@ -27,56 +27,24 @@
     <div class="hot-task">
       <div class="title van-hairline--bottom">热门任务</div>
       <van-list v-model="loading" :finished="finished" @load="loadMoreHotList(0)" :immediate-check="false">
-        <div v-for="hotItem in hotList" :key="hotItem.taskId" class="hot-item van-hairline--bottom" @click="viewTaskDetail(hotItem.taskId)">
+        <div v-for="hotItem in hotList" :key="hotItem.taskId" class="hot-item van-hairline--bottom" >
           <div class="desc">
             <div class="icon">
-              <!--<img src="" />-->
+              <img :src="hotItem.coverImage" />
             </div>
-            <p class="name">京东新用户注册</p>
+            <p class="name">{{hotItem.name}}</p>
           </div>
-          <div class="btn">赚2.25元</div>
+          <div class="btn" @click="viewTaskDetail(hotItem.taskId)">赚{{hotItem.cashCount}}元</div>
         </div>
       </van-list>
-      <!--<ul class="hot-list">
-        <li class="hot-item van-hairline&#45;&#45;bottom">
-          <div class="desc">
-            <div class="icon">
-              &lt;!&ndash;<img src="" />&ndash;&gt;
-            </div>
-            <p class="name">京东新用户注册</p>
-          </div>
-          <div class="btn">赚2.25元</div>
-        </li>
-        <li class="hot-item van-hairline&#45;&#45;bottom">
-          <div class="desc">
-            <div class="icon">
-              &lt;!&ndash;<img src="" />&ndash;&gt;
-            </div>
-            <p class="name">京东新用户注册</p>
-          </div>
-          <div class="btn">赚2.25元</div>
-        </li>
-        <li class="hot-item van-hairline&#45;&#45;bottom">
-          <div class="desc">
-            <div class="icon">
-              &lt;!&ndash;<img src="" />&ndash;&gt;
-            </div>
-            <p class="name">京东新用户注册</p>
-          </div>
-          <div class="btn">赚2.25元</div>
-        </li>
-      </ul>-->
     </div>
   </div>
 </template>
 
 
 <script>
-  import Vue from 'vue'
-  import { List } from 'vant'
   import { makeMoneyTaskList } from '@/api/api'
 
-  Vue.use(List)
   export default {
     data() {
       return {
@@ -117,7 +85,7 @@
               that.signList.push.apply(that.signList, data.taskList)
             }
             if (type === 0) {
-              that.hotList.push.apply(that.signList, data.taskList)
+              that.hotList.push.apply(that.hotList, data.taskList)
             }
           }
 

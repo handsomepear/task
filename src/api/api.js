@@ -1,9 +1,26 @@
 import request from '../util/_request'
 
+
+// 获取openId
+export function makeMoneyGetUserInfo(code) {
+  return request({
+    url: '/api/makeMoneyGetUserInfo',
+    data: { code }
+  })
+}
+
 // 获取个人钱包信息
 export function getCashAccountInfo() {
   return request({
     url: '/api/getCashAccountInfo'
+  })
+}
+
+// 获取钱包明细列表
+export function getCashDetailList({ pageNum, pageSize }) {
+  return request({
+    url: '/api/getCashDetailList',
+    data: { pageNum, pageSize }
   })
 }
 
@@ -16,30 +33,34 @@ export function makeMoneyTaskList(data) {
 }
 
 // 审核完成列表
-export function getAuditCompleteList() {
+export function getAuditCompleteList({ pageNum, pageSize }) {
   return request({
-    url: '/api/getAuditCompleteList'
+    url: '/api/getAuditCompleteList',
+    data: { pageNum, pageSize }
   })
 }
 
 // 失效列表
-export function getFailureList() {
+export function getFailureList({ pageNum, pageSize }) {
   return request({
-    url: '/api/getFailureList'
+    url: '/api/getFailureList',
+    data: { pageNum, pageSize }
   })
 }
 
 // 审核中列表
-export function getInAuditList() {
+export function getInAuditList({ pageNum, pageSize }) {
   return request({
-    url: '/api/getInAuditList'
+    url: '/api/getInAuditList',
+    data: { pageNum, pageSize }
   })
 }
 
 // 待提交列表
-export function getNoCommitList() {
+export function getNoCommitList({ pageNum, pageSize }) {
   return request({
-    url: '/api/getNoCommitList'
+    url: '/api/getNoCommitList',
+    data: { pageNum, pageSize }
   })
 }
 
